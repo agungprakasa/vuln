@@ -13,9 +13,9 @@ jobs:
       - name: docker compose
         run: docker-compose up --build --detach
       - name: docker pull
-        run: docker pull ictu/zap2docker-weekly
+        run: docker pull owasp/zap2docker-stable
       - name: running ZAP
-        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-baseline.py \
+        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -i -j \
               -t https://https://enterprise.posindonesia.co.id \
               -r testreport.html \
               --hook=/zap/auth_hook.py \
