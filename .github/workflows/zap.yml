@@ -15,7 +15,7 @@ jobs:
       - name: docker pull
         run: docker pull ictu/zap2docker-weekly
       - name: running ZAP
-        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-baseline.py -I -j \
+        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t ictu/zap2docker-weekly zap-baseline.py \
               -t https://https://enterprise.posindonesia.co.id \
               -r testreport.html \
               --hook=/zap/auth_hook.py \
