@@ -12,14 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: docker compose
         run: docker-compose up --build --detach
-      - name: docker pull
-        run: docker pull owasp/zap2docker-stable
-      - name: running ZAP
-        run: docker run --rm -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -i -j \
-              -t https://https://enterprise.posindonesia.co.id \
-              -r testreport.html \
-              --hook=/zap/auth_hook.py \
-              -z "auth.loginurl=https://https://enterprise.posindonesia.co.id/auth \
-                  auth.username="994492078" \
-                  auth.password="AAaa123*""
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: 'http://localhost:3000/'
       
